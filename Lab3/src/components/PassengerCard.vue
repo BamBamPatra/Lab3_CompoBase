@@ -1,11 +1,24 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 // defineProps<{
 //   msg: string
 // }>()
+const passenger = ref ({
+    
+    name: "John Doe",
+    trips: 250,
+    airline: 5
+
+})
 </script>
 
 <template>
- <div class="passenger-class"></div>
+ <div class="passenger-class">
+    <div class="passenger-card">
+        <h2> {{ passenger.name }}</h2>
+        <span> {{ passenger.trips }}</span>
+    </div>
+ </div>
 </template>
 
 <style scoped>
