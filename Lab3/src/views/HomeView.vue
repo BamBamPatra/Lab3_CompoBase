@@ -19,6 +19,8 @@ const passengers = ref<Passenger[]>([
 </script>
 
 <template>
+  <h1>Passenger this airline</h1>
+  <!-- new element -->
   <div class="passengers">
     <PassengerCard v-for="passenger in passengers" :key="passenger.id" :passenger="passenger"/>
   </div>
