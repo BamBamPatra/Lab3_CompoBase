@@ -1,23 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import Passenger from '@/types/Passenger'
+import { RouterLink } from 'vue-router';
 defineProps<{
   passenger: Passenger
 }>()
 </script>
 
 <template>
-    <div class="passenger-card">
-      <h2>{{ passenger.name }}</h2>
-      <span>Trips: {{ passenger.trips }}</span>
+    <RouterLink class="passenger-link" :to="{ name: 'passenger-detail-view' , params: {_id: passenger._id }}" >
+        <div class="passenger-card">
+            <h2>{{ passenger.name }}</h2>
+            <span>Trips: {{ passenger.trips }}</span>
 
-      <div v-for="airline in passenger.airline" :key="airline._id" class="airline-details">
-        <img :src="airline.logo" alt="Airline Logo" class="airline-logo" />
-        <h3>{{ airline.name }}</h3>
-        <p>Country: {{ airline.country }}</p>
-      </div>
-      
-    </div>
+            <div v-for="airline in passenger.airline" :key="airline._id" class="airline-details">
+                <img :src="airline.logo" alt="Airline Logo" class="airline-logo" />
+                <h3>{{ airline.name }}</h3>
+                <p>Country: {{ airline.country }}</p>
+            </div>
+        </div>
+    </RouterLink>
   </template>
 
 <style scoped>
@@ -42,5 +43,10 @@ defineProps<{
   width: 100px;
   height: auto;
   margin-bottom: 10px;
+}
+
+.passenger-link {
+    text-decoration: none;
+    color: #2c3e50;
 }
 </style>
