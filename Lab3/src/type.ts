@@ -1,5 +1,17 @@
-export interface Passenger {
-    id: String
-    name: String
-    trips: number
-}
+export interface Airline {
+    _id: string;
+    name: string;
+    country: string;
+    logo: string;
+    slogan: string;
+    headquarters: string;
+    website: string;
+    established: string;
+  }
+  
+  export interface Passenger {
+    _id: string;
+    name: string;
+    trips: number;
+    airline: Airline[];
+  }
