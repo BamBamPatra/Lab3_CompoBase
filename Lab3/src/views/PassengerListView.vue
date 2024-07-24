@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import PassengerCard from '@/components/PassengerCard.vue';
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import PassengerService from '@/services/PassengerService';
 import { Passenger } from '@/types/Passenger';
 
 const passengers = ref<Passenger[] | null>(null);
 
 onMounted(() => {
-  axios
-    .get('https://api.instantwebtools.net/v1/passenger')
+  PassengerService.getPassengers()
     .then((response) => {
       console.log(response.data);
       passengers.value = response.data.data; 
