@@ -14,6 +14,6 @@ export default {
         return apiClient.get('/passenger')
     } ,
     getPassengersByID(_id: string){
-        return apiClient.get('/passenger' + _id)
+        return apiClient.get('passenger/' + _id)
     }
 }

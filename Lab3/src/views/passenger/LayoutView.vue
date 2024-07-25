@@ -3,7 +3,7 @@ import { ref,onMounted,defineProps } from 'vue'
 import Passenger from '@/types/Passenger'
 import PassengerService from '@/services/PassengerService';
 
-const passenger = ref<Passenger>(null)
+const passenger = ref<Passenger | null>(null)
 const props = defineProps({
     _id: {
         type: String,
@@ -23,14 +23,15 @@ onMounted(() => {
 </script>
 
 <template>
+    <h1>Passenger in this Airline</h1>
     <div v-if="passenger">
-        <h2>{{ passenger.name }}</h2>
-        <span>Trips: {{ passenger.trips }}</span>
-
-        <div v-for="airline in passenger.airline" :key="airline._id" class="airline-details">
-            <img :src="airline.logo" alt="Airline Logo" class="airline-logo" />
-            <h3>{{ airline.name }}</h3>
-            <p>Country: {{ airline.country }}</p>
-        </div>
+        <nav>
+            <router-link :to="{ name: 'passenger-detail-view' }">Detail</router-link>
+            |
+            <router-link :to="{ name: 'passenger-register-view' }">Register</router-link>
+            |
+            <router-link :to="{ name: 'passenger-edit-view' }">Edit</router-link>
+        </nav>
+        <RouterView :passenger="passenger"></RouterView>
     </div>
 </template>

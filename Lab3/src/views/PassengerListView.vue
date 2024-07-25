@@ -32,14 +32,5 @@ onMounted(() => {
   align-items: center;
   gap: 20px;
 }
-
-.passenger-card {
-  width: 100%; 
-  max-width: 600px; 
-  box-sizing: border-box; 
-  padding: 20px; 
-  border: 1px solid #ddd; 
-  border-radius: 8px; 
-}
 </style>
 
