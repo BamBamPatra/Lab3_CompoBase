@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Passenger from '@/types/Passenger'
+import { type Passenger } from '@/types'
 import { RouterLink } from 'vue-router';
 defineProps<{
   passenger: Passenger
@@ -24,15 +24,15 @@ defineProps<{
 <style scoped>
 .passenger-card {
   padding: 20px;
-  width: 300px;
+  width: 250px;
+  cursor: pointer;
   border: 1px solid #39495c;
-  margin-bottom: 20px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 18px;
 }
 
 .passenger-card:hover {
   transform: scale(1.01);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 12px 0n rgba(0, 0, 0, 0.2);
 }
 
 .airline-details {

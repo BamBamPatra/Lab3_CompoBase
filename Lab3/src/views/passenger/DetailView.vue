@@ -10,6 +10,7 @@ const { passenger } = toRefs(props)
 </script>
 
 <template>
+    <div v-if="passenger">
     <h2>{{ passenger.name }}</h2>
     <span>Trips: {{ passenger.trips }}</span>
 
@@ -19,5 +20,6 @@ const { passenger } = toRefs(props)
         <p>Country: {{ airline.country }}</p>
         <p>Website: <a :href="'http://' + airline.website" target="_blank">{{ airline.website }}</a></p>
         <p>Established: {{ airline.established }}</p>
+    </div>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref,onMounted,defineProps } from 'vue'
-import Passenger from '@/types/Passenger'
+import { type Passenger } from '@/types'
 import PassengerService from '@/services/PassengerService';
 import { useRouter } from 'vue-router'
 
@@ -14,7 +14,7 @@ const props = defineProps({
 const router = useRouter()
 
 onMounted(() => {
-    PassengerService.getPassengersByID(props._id)
+    PassengerService.getPassenger(props._id)
         .then((response) => {
             passenger.value = response.data
         })
