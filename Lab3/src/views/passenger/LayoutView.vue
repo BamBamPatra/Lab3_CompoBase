@@ -1,30 +1,10 @@
 <script setup lang="ts">
-import { ref,onMounted,defineProps } from 'vue'
-import { type Passenger } from '@/types'
-import PassengerService from '@/services/PassengerService';
-import { useRouter } from 'vue-router'
+import { usePassengerStore } from '@/stores/passenger';
+import { storeToRefs } from 'pinia';
 
-const passenger = ref<Passenger | null>(null)
-const props = defineProps({
-    _id: {
-        type: String,
-        required: true
-    }
-})
-const router = useRouter()
+const store = usePassengerStore()
+const { passenger } = storeToRefs(store)
 
-onMounted(() => {
-    PassengerService.getPassenger(props._id)
-        .then((response) => {
-            passenger.value = response.data
-        })
-        .catch((err) => {
-            console.log(err);
-            router.push({ 
-                name: '404-resource-view',
-                params: { resource: 'passenger' }})
-        })
-})
 </script>
 
 <template>

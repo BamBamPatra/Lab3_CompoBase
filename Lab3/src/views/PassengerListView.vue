@@ -20,7 +20,6 @@ const hasNextPage = computed(() => {
 
 onMounted(() => {
   watchEffect(() => {
-    passengers.value = null
     PassengerService.getPassengers(2, page.value)
     .then((response) => {
       console.log(response.data);

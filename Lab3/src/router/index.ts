@@ -7,6 +7,8 @@ import PassengerEditView from '@/views/passenger/EditView.vue'
 import PassengerLayoutView from '@/views/passenger/LayoutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import nProgress from 'nprogress'
+import PassengerService from '@/services/PassengerService'
+import { usePassengerStore } from '@/stores/passenger'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +29,24 @@ const router = createRouter({
       name: 'passenger-layout-view',
       component: PassengerLayoutView,
       props: true,
+      beforeEnter: (to) => {
+        const _id = to.params._id as string
+        const passsengerStore = usePassengerStore()
+        return PassengerService.getPassenger(_id)
+        .then((response) => {
+          //need to setup the data for the passenger
+          passsengerStore.setPassenger(response.data)
+        })
+        .catch((error) => {
+          if(error.response && error.response.status === 404) {
+            return {
+              name: '404-resource-view',
+              params: { resource: 'passenger'}
+            }
+          }
+        })
+        
+      },
       children: [
         {
           path: '',
