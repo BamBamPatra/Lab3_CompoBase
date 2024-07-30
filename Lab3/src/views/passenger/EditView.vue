@@ -16,7 +16,7 @@ const edit = () => {
     setTimeout(() => {
         store.resetMessage()
     },5000)
-    router.push({ name: 'passenger-detail-view' , params: { id: props.passenger._id}})
+    router.push({ name: 'passenger-list-view' , params: { id: props.passenger._id}})
 }
 </script>
 
