@@ -15,7 +15,7 @@ const register = () => {
     store.updateMessage('You are successufully registered for ' + props.passenger.name)
     setTimeout(() => {
         store.resetMessage()
-    },3000)
+    },5000)
     router.push({ name: 'passenger-detail-view' , params: { id: props.passenger._id}})
 }
 

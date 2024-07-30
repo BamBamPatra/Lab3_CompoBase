@@ -15,7 +15,7 @@ const edit = () => {
     store.updateMessage('You are successufully edit for ' + props.passenger.name)
     setTimeout(() => {
         store.resetMessage()
-    },3000)
+    },5000)
     router.push({ name: 'passenger-detail-view' , params: { id: props.passenger._id}})
 }
 </script>

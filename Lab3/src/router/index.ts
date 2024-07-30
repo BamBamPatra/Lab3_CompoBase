@@ -6,6 +6,7 @@ import PassengerRegisterView from '@/views/passenger/RegisterView.vue'
 import PassengerEditView from '@/views/passenger/EditView.vue'
 import PassengerLayoutView from '@/views/passenger/LayoutView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+import nProgress from 'nprogress'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,6 +60,14 @@ const router = createRouter({
       component: NotFoundView
     }
   ]
+})
+
+router.beforeEach(() => {
+  nProgress.start()
+})
+
+router.afterEach(() => {
+  nProgress
 })
 
 export default router

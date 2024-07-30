@@ -29,7 +29,7 @@ onMounted(() => {
     })
     .catch((error) => {
       console.error('There was an error!', error);
-    });
+    })
   })
 });
 </script>
