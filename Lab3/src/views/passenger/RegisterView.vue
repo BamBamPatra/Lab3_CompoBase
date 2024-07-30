@@ -2,6 +2,7 @@
 import { toRefs,defineProps, useAttrs } from 'vue'
 import { type Passenger } from '@/types'
 import { useRouter } from 'vue-router';
+import { useMessageStore } from '@/stores/message';
 
 const props = defineProps<{
     passenger: Passenger
@@ -9,10 +10,13 @@ const props = defineProps<{
 }>()
 const { passenger } = toRefs(props)
 const router = useRouter()
+const store = useMessageStore()
 const register = () => {
-    //if the registration API call successful
-    //Push back to thr passenger details view
-    router.push({ name: 'passenger-detail-view'})
+    store.updateMessage('You are successufully registered for ' + props.passenger.name)
+    setTimeout(() => {
+        store.resetMessage()
+    },3000)
+    router.push({ name: 'passenger-detail-view' , params: { id: props.passenger._id}})
 }
 
 </script>

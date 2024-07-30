@@ -9,9 +9,13 @@ export interface Airline {
     established: string;
   }
   
-  export interface Passenger {
-    _id: string;
-    name: string;
-    trips: number;
-    airline: Airline[];
-  }
+export interface Passenger {
+  _id: string;
+  name: string;
+  trips: number;
+  airline: Airline[];
+}
+
+export interface MessageState {
+  message: string
+}

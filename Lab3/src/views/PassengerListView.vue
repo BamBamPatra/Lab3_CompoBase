@@ -2,7 +2,7 @@
 import PassengerCard from '@/components/PassengerCard.vue';
 import { ref, onMounted , computed , watchEffect } from 'vue';
 import PassengerService from '@/services/PassengerService';
-import { type Passenger } from '@/types';
+import { type Passenger } from '@/types'
 
 const passengers = ref<Passenger[] | null>(null);
 const props = defineProps({
